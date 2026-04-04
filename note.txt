@@ -1,0 +1,5 @@
+Exactly! You nailed the logic. Let's look at the "Why" behind using a map specifically.
+
+If you are drinking the file through a "straw" (the Scanner) one line at a time, you have a problem: The computer has a very short memory. Once the straw moves to Line 2, it completely forgets what was on Line 1.
+
+The Map is your "Notebook" where you write down what you saw so you don't forget.
