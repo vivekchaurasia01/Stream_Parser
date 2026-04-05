@@ -19,12 +19,17 @@ type WordCount struct {
 func main() {
 	start := time.Now()
 
-	OpenFile,err := os.Open("Biodata.txt")
-	if err != nil {
-		fmt.Printf("Error: Could not find the file. %v\n",err)  // %v -->  Print Default format..
-		return
+	// OpenFile,err := os.Open("Biodata.txt")
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// defer OpenFile.Close()
+
+	// Lets try to take argument from command line....
+	if len(os.Args) < 2 {
+		fmt.Println("Usage : go run main.go ")
+
 	}
-	defer OpenFile.Close()
 
 	StoreData := make(map[string]int)
 
