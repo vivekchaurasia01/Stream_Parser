@@ -26,10 +26,19 @@ func main() {
 	// defer OpenFile.Close()
 
 	// Lets try to take argument from command line....
-	if len(os.Args) < 2 {
-		fmt.Println("Usage : go run main.go ")
-
+	if len(os.Args) < 2 {  //In real CLI tools (like git, docker):Error → one line,Usage/help → separate line or block
+		fmt.Println("Error: Please provide a filename.")
+		fmt.Println("Usage: go run main.go <filename.txt>")
+		return
 	}
+	
+	filename := os.Args[1]
+
+	OpenFile,err := os.Open(filename)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer OpenFile.Close()
 
 	StoreData := make(map[string]int)
 

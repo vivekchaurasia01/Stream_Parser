@@ -4,4 +4,4 @@ build:
 	go build -o $(APP) main.go
 
 run: build
-	./$(APP)
+	./$(APP) $(FILE)
