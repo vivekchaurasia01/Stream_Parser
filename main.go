@@ -9,11 +9,23 @@ import (
 	"sort"
 	"strings"
 	"time"
+	"unicode"
 )
 
 type WordCount struct {
 	Word string
 	Count int
+}
+
+func Cleanword(s string) string {
+	var b strings.Builder
+
+	for _, r := range s {
+		if unicode.IsLetter(r) {
+			b.WriteRune(unicode.ToLower(r))
+		}
+	}
+	return b.String()
 }
 
 func main() {
