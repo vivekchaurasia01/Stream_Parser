@@ -17,7 +17,31 @@ type WordCount struct {
 	Count int
 }
 
-func Cleanword(s string) string {
+func OpenFile(filename string) (*os.File, error) {
+	if len(os.Args) < 2 {
+		fmt.Println("Error: Please provide a filename.")
+		fmt.Println("Usage: go run main.go <filename.txt>")
+	}
+	filename = os.Args[1]
+
+	File,err := os.Open(filename)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer File.Close()
+
+	return File,nil
+}
+
+func ReadData(file string) string {
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		line := scanner.Text()
+		words := strings.Fields(line)
+	}
+}
+
+func CleanWord(s string) string {
 	var b strings.Builder
 
 	for _, r := range s {
@@ -27,20 +51,10 @@ func Cleanword(s string) string {
 	}
 	return b.String()
 }
-// func OpenFile(filename string) (*os.File, error) {
-// 	if len(os.Args) < 2 {
-// 		fmt.Println("Error: Please provide a filename.")
-// 		fmt.Println("Usage: go run main.go <filename.txt>")
-// 	}
-// 	filename := os.Args[1]
 
-// 	OpenFile,err := os.Open(filename)
-// 	if err != nil {
-// 		log.Fatal(err)
-// 	}
-// 	defer OpenFile.Close()
-// 	return &File,null
-// }
+func Storage(s string) map[string]int {
+	OpenFile(filename)
+}
 
 func main() {
 	start := time.Now()
@@ -58,13 +72,13 @@ func main() {
 	// 	return
 	// }
 	
-	filename := os.Args[1]
+	// filename := os.Args[1]
 
-	OpenFile,err := os.Open(filename)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer OpenFile.Close()
+	// OpenFile,err := os.Open(filename)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// defer OpenFile.Close()
 
 	StoreData := make(map[string]int)
 
